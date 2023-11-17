@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video with Note-taking UI</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.3.0/aframe/build/aframe-ar.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            height: 100vh; /* Make the body take the full height of the viewport */
+        }
+
+        #videoContainer {
+            flex: 1; /* Adjust the flex value to control the width of the video */
+            position: relative;
+            height: 100%;
+        }
+
+        #notesContainer {
+            flex: 1; /* Adjust the flex value to control the width of the note-taking UI */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Adjusted to start from the top */
+            align-items: flex-start; /* Adjusted to align to the left */
+            background-color: #000;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #000;
+            color: #fff;
+            height: 100%;
+        }
+
+        #notesUI {
+            width: 100%;
+            flex: 1; /* Adjusted to take full height */
+        }
+
+        .note-heading {
+            font-size: 16px;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        textarea {
+            width: 100%;
+            flex: 1; /* Adjusted to take full height */
+            resize: none;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- YouTube Video Embed -->
+    <div id="videoContainer">
+        <iframe src="https://www.youtube-nocookie.com/embed/V7BBKpDtxLo?si=2shZfHVmiMWo9T9d" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
+    <!-- Note-taking UI -->
+    <div id="notesContainer">
+        <!-- Note Input -->
+        <div class="note-heading">Take a Note:</div>
+        <textarea id="noteInput" placeholder="Type your notes here..."></textarea>
+
+        <!-- Additional UI Elements -->
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <div>
+                <input type="checkbox" id="importantNote" style="margin-right: 5px;">
+                <label for="importantNote" style="font-size: 14px;">Important</label>
+            </div>
+            <button onclick="takeNote()" style="background-color: #4CAF50; color: #fff; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer;">Save Note</button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Note-taking -->
+    <script>
+        function takeNote() {
+            var noteInput = document.getElementById('noteInput');
+            var noteText = noteInput.value;
+            console.log('Note Taken:', noteText);
+            // Add logic to save or display the note as needed
+        }
+    </script>
+</body>
+</html>
